@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -51,12 +50,46 @@
             android:ems="10"
             android:inputType="textEmailAddress" />
 
-        <Button
-            android:id="@+id/check"
+    </TableRow>
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/c_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="중복확인"
-            android:textSize="11dp"/>
+            android:layout_margin="3dp"
+            android:text="이름"
+            android:ems="4"
+            android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/Tc_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="20" />
+    </TableRow>
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/c_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:text="전화번호"
+            android:ems="4"
+            android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/Tc_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="20" />
     </TableRow>
     <TableRow
         android:layout_width="wrap_content"
@@ -79,73 +112,8 @@
             android:ems="20"
             android:inputType="textPassword" />
     </TableRow>
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
 
-        <TextView
-            android:id="@+id/join_pwcheck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:text="pw확인"
-            android:ems="4"
-            android:textSize="17dp" />
 
-        <EditText
-            android:id="@+id/Tjoin_pwcheck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="20"
-            android:inputType="textPassword" />
-    </TableRow>
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:text="이름"
-            android:ems="4"
-            android:textSize="17dp" />
-
-        <EditText
-            android:id="@+id/Tname"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:ems="5"
-            android:inputType="text" />
-    </TableRow>
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
-        <TextView
-            android:id="@+id/phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:text="휴대전화"
-            android:ems="4"
-            android:textSize="17dp" />
-
-        <EditText
-            android:id="@+id/Tphone"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:inputType="phone" />
-    </TableRow>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/signUp"
@@ -158,6 +126,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>
