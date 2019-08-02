@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">dmdm</string>
+    <string-array name="checklist">
+        <item>라면</item>
+        <item>휴지</item>
+        <item>섬유유연제</item>
+    </string-array>
+    <string-array name="simple_list_item_1">
+        <item>라면</item>
+        <item>휴지</item>
+        <item>섬유유연제</item>
+    </string-array>
+</resources>
