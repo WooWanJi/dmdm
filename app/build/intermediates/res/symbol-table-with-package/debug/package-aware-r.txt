@@ -1100,13 +1100,13 @@ id buttonScan
 id c_name
 id c_num
 id cancel_action
+id category
 id center
 id centerCrop
 id center_horizontal
 id center_vertical
 id chains
 id checkbox
-id checklist
 id childName
 id chronometer
 id clip_horizontal
@@ -1118,6 +1118,7 @@ id contentPanel
 id coordinator
 id custom
 id customPanel
+id db_list_view
 id decor_content_parent
 id default_activity_button
 id design_bottom_sheet
@@ -1352,6 +1353,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_category
 layout activity_checklist
 layout activity_first
 layout activity_history

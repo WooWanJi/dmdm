@@ -14,9 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ScannerActivity"></activity>
+        <activity android:name=".categoryActivity"></activity>
+        <activity android:name=".listviewActivity" />
+        <activity android:name=".ScannerActivity" />
         <activity android:name=".Scanner" />
-        <activity android:name=".listview" />
         <activity android:name=".firstActivity" />
         <activity android:name=".IntroActivity" />
         <activity android:name=".historyActivity" />

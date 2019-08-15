@@ -1,9 +1,9 @@
-﻿package com.example.dmdm;
+package com.example.dmdm;
 
 public class Menu {
     private String name; private String price;
     public static final Menu[] menus = new Menu[]{
-            new Menu("신라면bbb", "dd"),
+            new Menu("신라면", "dd"),
             new Menu("진라면", ""),
             new Menu("열라면", ""),
             new Menu("팔도비빔면", "")

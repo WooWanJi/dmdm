@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-34:12
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-35:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\DW\.gradle\caches\transforms-2\files-2.1\7b3982b5904159a9e528b7abfd77322c\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\DW\.gradle\caches\transforms-2\files-2.1\86df78d031250197dac6e942f8d3dcde\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\DW\.gradle\caches\transforms-2\files-2.1\de00ca7f01a6af3cd44b8719effb205f\AndroidManifest.xml:17:1-22:12
@@ -38,20 +38,20 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\DW\.gradle\cac
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\DW\.gradle\caches\transforms-2\files-2.1\2ffd7f68eb8064428eb09974859949eb\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\DW\.gradle\caches\transforms-2\files-2.1\21d91eaec2f87fa27b40caa08d0a32e2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\DW\.gradle\caches\transforms-2\files-2.1\afebb03e0a216eae94fed64ee0aee223\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-35:12
 	package
 		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:3:5-31
 		INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-34:12
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-34:12
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:2:11-69
@@ -64,7 +64,7 @@ ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:6:5-79
 	android:name
 		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:6:22-76
 application
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:8:5-32:19
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:8:5-33:19
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\DW\.gradle\caches\transforms-2\files-2.1\7b3982b5904159a9e528b7abfd77322c\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\DW\.gradle\caches\transforms-2\files-2.1\7b3982b5904159a9e528b7abfd77322c\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\DW\.gradle\caches\transforms-2\files-2.1\86df78d031250197dac6e942f8d3dcde\AndroidManifest.xml:22:5-20
@@ -93,52 +93,56 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\DW
 		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:12:9-69
 	android:usesCleartextTraffic
 		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:16:9-44
+activity#com.example.dmdm.categoryActivity
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:17:9-63
+	android:name
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:17:19-51
+activity#com.example.dmdm.listviewActivity
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:18:9-54
+	android:name
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:18:19-51
 activity#com.example.dmdm.ScannerActivity
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:17:9-62
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:19:9-53
 	android:name
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:17:19-50
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:19:19-50
 activity#com.example.dmdm.Scanner
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:18:9-45
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:20:9-45
 	android:name
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:18:19-42
-activity#com.example.dmdm.listview
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:19:9-46
-	android:name
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:19:19-43
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:20:19-42
 activity#com.example.dmdm.firstActivity
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:20:9-51
-	android:name
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:20:19-48
-activity#com.example.dmdm.IntroActivity
 ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:21:9-51
 	android:name
 		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:21:19-48
+activity#com.example.dmdm.IntroActivity
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:22:9-51
+	android:name
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:22:19-48
 activity#com.example.dmdm.historyActivity
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:22:9-53
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:23:9-53
 	android:name
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:22:19-50
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:23:19-50
 activity#com.example.dmdm.checklistActivity
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:23:9-55
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:24:9-55
 	android:name
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:23:19-52
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:24:19-52
 activity#com.example.dmdm.joinActivity
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:24:9-50
-	android:name
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:24:19-47
-activity#com.example.dmdm.MainActivity
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:25:9-31:20
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:25:9-50
 	android:name
 		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:25:19-47
+activity#com.example.dmdm.MainActivity
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:26:9-32:20
+	android:name
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:26:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:26:13-30:29
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:27:13-31:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:27:17-69
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:28:17-69
 	android:name
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:27:25-66
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:28:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:29:17-77
+ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:29:27-74
+		ADDED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml:30:27-74
 uses-sdk
 INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\DW\dmdm\app\src\main\AndroidManifest.xml

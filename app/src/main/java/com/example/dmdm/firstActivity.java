@@ -33,7 +33,7 @@ public class firstActivity extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), checklistActivity.class); // 현재화면 제어권자, 다음 넘어갈 클래스
+                Intent intent = new Intent(getApplicationContext(), categoryActivity.class); // 현재화면 제어권자, 다음 넘어갈 클래스
                 //intent.putExtra("message", "반갑습니다.");
                 startActivity(intent);
             }

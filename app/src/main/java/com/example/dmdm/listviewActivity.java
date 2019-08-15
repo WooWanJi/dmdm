@@ -1,26 +1,20 @@
 package com.example.dmdm;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import org.apache.http.message.*;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class listviewActivity extends AppCompatActivity {
 
@@ -32,6 +26,7 @@ public class listviewActivity extends AppCompatActivity {
     //Handler handler = null;
     //MainActivity.NetworkTask networkTask = null;
     MyAsyncTask myAsyncTask = null;
+    ArrayList<String> arrayList = new ArrayList<String>();
 
 
     public class MyAsyncTask extends AsyncTask<String, Void, ArrayList<String>>
@@ -49,6 +44,7 @@ public class listviewActivity extends AppCompatActivity {
                 urlConn.setRequestMethod("POST");
 
                 OutputStreamWriter osw = new OutputStreamWriter(urlConn.getOutputStream());
+                osw.write("BigCatego="+params[0]);//SmallCatego에 배열의 0번째요소 삽입
                 osw.flush();
 
                 if (urlConn.getResponseCode() == HttpURLConnection.HTTP_OK){
@@ -92,15 +88,30 @@ public class listviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
         ArrayList<String> result = new ArrayList<String>();
+        Intent intent = getIntent();
+        String SmallCatego = intent.getStringExtra("BigCatego");
         try{
             myAsyncTask = new MyAsyncTask();
-            result = myAsyncTask.execute().get();
+            result = myAsyncTask.execute(SmallCatego).get();
         } catch (Exception e){
 
         }
-        listview = (ListView)findViewById(R.id.listview);
+        /*//listview = (ListView)findViewById(R.id.listview);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
+       // ArrayList<String> result = new ArrayList<String>();
+        listview = (ListView)findViewById(R.id.listview);
+        //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
 
+
+        listview.setAdapter(adapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView parent, View v, int position, long id){
+                Intent intent = new Intent(getApplicationContext(), checklistActivity.class);
+                intent.putExtra("SmallCatego", arrayList.get(position));
+                startActivity(intent);
+            }
+        });*/
 
         listview.setAdapter(adapter);
 

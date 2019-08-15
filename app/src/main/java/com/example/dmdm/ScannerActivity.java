@@ -15,7 +15,6 @@ import com.google.zxing.integration.android.IntentResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static java.security.AccessController.getContext;
 
 public class ScannerActivity extends AppCompatActivity {
     //view Objects

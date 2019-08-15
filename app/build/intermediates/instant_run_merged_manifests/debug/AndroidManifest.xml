@@ -43,9 +43,10 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.dmdm.categoryActivity" />
+        <activity android:name="com.example.dmdm.listviewActivity" />
         <activity android:name="com.example.dmdm.ScannerActivity" />
         <activity android:name="com.example.dmdm.Scanner" />
-        <activity android:name="com.example.dmdm.listview" />
         <activity android:name="com.example.dmdm.firstActivity" />
         <activity android:name="com.example.dmdm.IntroActivity" />
         <activity android:name="com.example.dmdm.historyActivity" />

@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                         result = result.replace("\t","");
                         if (result.equals("1")) {
                             Toast.makeText(MainActivity.this, "로그인", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(MainActivity.this, listview.class);
+                            Intent intent = new Intent(MainActivity.this, checklistActivity.class);
                             startActivity(intent);
                             finish();
                         } else if (result.equals("2")) {
