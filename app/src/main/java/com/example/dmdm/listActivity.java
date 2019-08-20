@@ -1,3 +1,4 @@
+/*
 package com.example.dmdm;
 
 import android.content.Intent;
@@ -37,3 +38,4 @@ public class listActivity extends AppCompatActivity {
 
     }
 }
+*/

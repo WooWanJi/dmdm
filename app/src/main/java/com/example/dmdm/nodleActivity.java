@@ -1,3 +1,4 @@
+/*
 package com.example.dmdm;
 
 import android.content.Intent;
@@ -35,3 +36,4 @@ public class nodleActivity extends AppCompatActivity {
                 };
     }
 }
+*/

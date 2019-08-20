@@ -25,7 +25,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 
 public class categoryActivity extends AppCompatActivity {
-
+    private int REQUEST_TEST = 1;
     private String jdbUrl = "jdbc:mysql://localhost:3306/dmdm";
     private String dbId = "root";
     private String dbPw = "12345";
@@ -112,7 +112,7 @@ public class categoryActivity extends AppCompatActivity {
             public void onItemClick(AdapterView parent, View v, int position, long id){
                 Intent intent = new Intent(getApplicationContext(), listviewActivity.class);
                 intent.putExtra("BigCatego", arrayList.get(position));
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_TEST);
             }
         });
     }
@@ -126,6 +126,22 @@ public class categoryActivity extends AppCompatActivity {
         intent.putExtra("p_name", listview.getId());
         startActivity(intent);
     }**/
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == REQUEST_TEST) {
+            if (resultCode == RESULT_OK) {
+                Intent intent = new Intent();
+                //intent.putExtra("result", "some value");
+                setResult(RESULT_OK, intent);
+                finish();
+            } else {   // RESULT_CANCEL
+
+            }
+//        } else if (requestCode == REQUEST_ANOTHER) {
+//            ...
+        }
+    }
 
 }

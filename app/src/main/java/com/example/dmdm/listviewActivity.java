@@ -1,9 +1,13 @@
 package com.example.dmdm;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +20,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import org.json.JSONArray;
 
+import static android.content.ContentValues.TAG;
+
 public class listviewActivity extends AppCompatActivity {
 
     private String jdbUrl = "jdbc:mysql://localhost:3306/dmdm";
@@ -27,11 +33,11 @@ public class listviewActivity extends AppCompatActivity {
     //MainActivity.NetworkTask networkTask = null;
     MyAsyncTask myAsyncTask = null;
     ArrayList<String> arrayList = new ArrayList<String>();
-
+    private String p_name;
+    SQLiteDatabase db;
 
     public class MyAsyncTask extends AsyncTask<String, Void, ArrayList<String>>
     {
-        ArrayList<String> arrayList = new ArrayList<String>();
         String sendMsg, receiveMsg;
         @Override
         protected ArrayList<String> doInBackground(String... params) {
@@ -82,6 +88,7 @@ public class listviewActivity extends AppCompatActivity {
         }
 
 
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,36 +96,49 @@ public class listviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_listview);
         ArrayList<String> result = new ArrayList<String>();
         Intent intent = getIntent();
-        String SmallCatego = intent.getStringExtra("BigCatego");
+        final String SmallCatego = intent.getStringExtra("BigCatego");
+
+        DatabaseHelper databaseHelper = new DatabaseHelper(this, "DB", null, 1);
+        db = databaseHelper.getWritableDatabase();
         try{
             myAsyncTask = new MyAsyncTask();
             result = myAsyncTask.execute(SmallCatego).get();
         } catch (Exception e){
 
         }
-        /*//listview = (ListView)findViewById(R.id.listview);
+        //listview = (ListView)findViewById(R.id.listview);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
        // ArrayList<String> result = new ArrayList<String>();
         listview = (ListView)findViewById(R.id.listview);
         //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
 
 
+
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
-                Intent intent = new Intent(getApplicationContext(), checklistActivity.class);
-                intent.putExtra("SmallCatego", arrayList.get(position));
-                startActivity(intent);
+                dbInsert("checklist", arrayList.get(position));
+                Intent intent = new Intent();
+                //intent.putExtra("result", "some value");
+                setResult(RESULT_OK, intent);
+                finish();
+
             }
-        });*/
+        });
 
         listview.setAdapter(adapter);
 
 
     }
 
-
+    void dbInsert(String tableName, String p_name){
+        Log.d(TAG, "Insert Data" + p_name);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("p_name", p_name);
+        long id = db.insert(tableName, null, contentValues);
+        //Log.d(TAG, "id: "+p_id);
+    }
 
 
 }

@@ -16,13 +16,9 @@ import java.util.ArrayList;
 import static android.content.ContentValues.TAG;
 
 public class checklistActivity extends AppCompatActivity {
-
+    private int REQUEST_TEST = 1;
     ArrayAdapter<String> arrayAdapter;
-    ArrayList<String> arrayList = new ArrayList<String>();
-    ListView listview;
 
-    static ArrayList<String> arrayIndex =  new ArrayList<String>();
-    static ArrayList<String> arrayData = new ArrayList<String>();
     SQLiteDatabase db;
 
     @Override
@@ -35,6 +31,7 @@ public class checklistActivity extends AppCompatActivity {
 
         DatabaseHelper databaseHelper = new DatabaseHelper(this, "DB", null, 1);
         db = databaseHelper.getWritableDatabase();
+        //databaseHelper.onCreate(db);
 
         Button btn_search = (Button) findViewById(R.id.search);
         btn_search.setOnClickListener(new View.OnClickListener() {
@@ -42,26 +39,59 @@ public class checklistActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), categoryActivity.class); // 현재화면 제어권자, 다음 넘어갈 클래스
                 //intent.putExtra("message", "반갑습니다.");
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_TEST);
             }
         });
+        //finish();
 
     }
-
-    void dbInsert(String tableName, String p_name, String SmallCatego, String c_id, Integer p_id, Integer amount, Boolean check){
-        Log.d(TAG, "Insert Data" + p_name);
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("상품명", p_name);
-        long id = db.insert(tableName, null, contentValues);
-        Log.d(TAG, "id: "+p_id);
-    }
-
     void dbDelete(String tableName, String p_name){
         Log.d(TAG, "Delete Data "+p_name);
         String p_nameArr[] = {p_name};
         int n = db.delete(tableName, "P_NAME = ?", p_nameArr);
         Log.d(TAG, "n: "+n);
     }
+    //이름 가져오기
+
+    void dbSelect(){
+        try{
+            String sql = "select p_name from checklist";
+            Cursor resultset = db.rawQuery(sql, null);
+            int count = resultset.getCount();
+            String[] result = new String[count];
+
+            for(int i=0;i<count;i++){
+                resultset.moveToNext();
+                String SmallCatego = resultset.getString(0);
+                result[i] = SmallCatego+"";
+            }
+            System.out.println("select ok");
+            arrayAdapter.clear();
+            arrayAdapter.addAll(result);
+        }catch (Exception e){
+
+        }
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_TEST) {
+            if (resultCode == RESULT_OK) {
+                dbSelect();
+            } else {   // RESULT_CANCEL
+
+            }
+//        } else if (requestCode == REQUEST_ANOTHER) {
+//            ...
+        }
+    }
+    /*void dbSelect(){
+        Cursor c = db.query("checklist", null, null,null, null, null, null);
+        while(c.moveToNext()){
+            String SmallCatego = c.getString(c.getColumnIndex("SmallCatego"));
+
+        }
+    }*/
 
     void dbSearch(String tableName){
         Cursor cursor = null;
@@ -78,5 +108,6 @@ public class checklistActivity extends AppCompatActivity {
                 cursor.close();
             }
         }
-    }
+    }//도와줘서 항상 고마워
+
 }

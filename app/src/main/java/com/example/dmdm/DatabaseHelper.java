@@ -19,11 +19,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase){
         Log.d(TAG, "table create");
         String createQuery = "CREATE TABLE " +table_name+
-                "( c_id text not null, "+
-                "SmallCatego text not null, "+
+                "( c_id text , "+
+                "SmallCatego text , "+
                 "p_name text not null, "+
-                "p_id integer not null, "+
-                "amunt integer not null);";
+                "p_id integer , "+
+                "amount integer );";
                 //"check (boolean));";
         sqLiteDatabase.execSQL(createQuery);
     }
