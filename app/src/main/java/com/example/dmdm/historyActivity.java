@@ -1,3 +1,4 @@
+/*
 package com.example.dmdm;
 
 import android.app.Activity;
@@ -40,3 +41,4 @@ public class historyActivity extends Activity {
 }
 
 
+*/

@@ -66,7 +66,7 @@ public class listviewActivity extends AppCompatActivity {
                     //Log.i("결과", receiveMsg+"");
 
                     //JsonArray로 파싱 receiveMsg
-                   // JSONObject jsonObject = new JSONObject();
+                    // JSONObject jsonObject = new JSONObject();
                     JSONArray jsonArray = new JSONArray(receiveMsg);
                     for(int i=0;i<jsonArray.length();i++){
                         // Log.d(i+":", jsonArray.get(i).toString());
@@ -108,7 +108,7 @@ public class listviewActivity extends AppCompatActivity {
         }
         //listview = (ListView)findViewById(R.id.listview);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
-       // ArrayList<String> result = new ArrayList<String>();
+        // ArrayList<String> result = new ArrayList<String>();
         listview = (ListView)findViewById(R.id.listview);
         //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
 

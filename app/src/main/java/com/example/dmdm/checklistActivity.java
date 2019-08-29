@@ -11,35 +11,52 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import java.util.ArrayList;
 import static android.content.ContentValues.TAG;
 
+/*
+        2019 08 28 코딩 목표 arrayAdapter를 전부 커스텀 어뎁터로 교체하는 것이 목표
+ */
 public class checklistActivity extends AppCompatActivity {
     private int REQUEST_TEST = 1;
-    ArrayAdapter<String> arrayAdapter;
 
+    /* step 1
+    커스텀 어뎁터 변수 선언
+    */
+    ListView listView;
     SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checklist);
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        ListView listView = (ListView) findViewById(R.id.db_list_view);
-        listView.setAdapter(arrayAdapter);
+       // arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.activity_list_item); //지워야지***************************************
+
+        listView = (ListView) findViewById(R.id.listview1);
 
         DatabaseHelper databaseHelper = new DatabaseHelper(this, "DB", null, 1);
         db = databaseHelper.getWritableDatabase();
         //databaseHelper.onCreate(db);
 
-        Button btn_search = (Button) findViewById(R.id.search);
+        ImageButton btn_search = (ImageButton) findViewById(R.id.search);
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), categoryActivity.class); // 현재화면 제어권자, 다음 넘어갈 클래스
                 //intent.putExtra("message", "반갑습니다.");
                 startActivityForResult(intent, REQUEST_TEST);
+            }
+        });
+        ImageButton scanner = (ImageButton) findViewById(R.id.scanBtn);
+        scanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(
+                        getApplicationContext(), // 현재 화면의 제어권자
+                        ScannerActivity.class); // 다음 넘어갈 클래스 지정
+                startActivity(intent); // 다음 화면으로 넘어간다
             }
         });
         //finish();
@@ -66,8 +83,17 @@ public class checklistActivity extends AppCompatActivity {
                 result[i] = SmallCatego+"";
             }
             System.out.println("select ok");
-            arrayAdapter.clear();
-            arrayAdapter.addAll(result);
+            /*arrayAdapter.clear();
+            arrayAdapter.addAll(result);*/
+
+            // step 2 커스텀 어레이 생성(new)
+            CustomChoiceListViewAdapter customChoiceListViewAdapter = new CustomChoiceListViewAdapter();
+            // step 3 리스트 뷰에 커스텀 어뎁터 넣기
+            listView.setAdapter(customChoiceListViewAdapter);
+            // step 4 result의 내용을 커스텀어뎁터 변수에 addItem(result의 자료형과 addItem 메소드의 파라미터를 잘보고 넣는 방법을 응용)
+            for(int i=0;i<result.length ;i++) {
+                customChoiceListViewAdapter.addItem(result[i]);
+            }
         }catch (Exception e){
 
         }
@@ -81,17 +107,10 @@ public class checklistActivity extends AppCompatActivity {
             } else {   // RESULT_CANCEL
 
             }
-//        } else if (requestCode == REQUEST_ANOTHER) {
-//            ...
-        }
-    }
-    /*void dbSelect(){
-        Cursor c = db.query("checklist", null, null,null, null, null, null);
-        while(c.moveToNext()){
-            String SmallCatego = c.getString(c.getColumnIndex("SmallCatego"));
 
         }
-    }*/
+    }
+
 
     void dbSearch(String tableName){
         Cursor cursor = null;
@@ -108,6 +127,6 @@ public class checklistActivity extends AppCompatActivity {
                 cursor.close();
             }
         }
-    }//도와줘서 항상 고마워
+    }
 
 }

@@ -1,3 +1,4 @@
+/*
 package com.example.dmdm;
 
 import android.content.Intent;
@@ -64,4 +65,4 @@ public class firstActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
+}*/

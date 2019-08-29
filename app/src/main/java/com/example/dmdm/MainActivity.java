@@ -48,16 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent); // 다음 화면으로 넘어간다
             }
         });
-        Button scanner = (Button) findViewById(R.id.scanBtn);
-        scanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(
-                        getApplicationContext(), // 현재 화면의 제어권자
-                        ScannerActivity.class); // 다음 넘어갈 클래스 지정
-                startActivity(intent); // 다음 화면으로 넘어간다
-            }
-        });
+
     }
 
     public class NetworkTask extends AsyncTask<String, Void, String> {
