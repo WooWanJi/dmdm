@@ -69,7 +69,7 @@ public class ScannerActivity extends AppCompatActivity {
             //Log.e("*********", "*************2");
             try {
                 String str;
-                URL url = new URL("http://220.76.34.131:8080/dmdm/product.jsp");
+                URL url = new URL("http://210.121.81.97:8080/dmdm/aaa.jsp");
                 HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
                 urlConn.setRequestProperty("Context_Type", "application/x-www-form-urlencoded");
                 urlConn.setRequestMethod("POST");
@@ -115,22 +115,20 @@ public class ScannerActivity extends AppCompatActivity {
             } else {
                 //qrcode 결과가 있으면
                 Toast.makeText(ScannerActivity.this, "스캔완료!", Toast.LENGTH_SHORT).show();
+
                 try {
                     //data를 json으로 변환
                     //JSONObject obj = new JSONObject(result.getContents());
                     //name.setText(obj.getString("name"));
+                    networkTask = new NetworkTask();
+                    String product = networkTask.execute(result.getContents()).get();
 
                 } catch (Exception e) {
                     e.printStackTrace();
                     //Toast.makeText(MainActivity.this, result.getContents(), Toast.LENGTH_LONG).show();
 
-                } finally {
-                    category.setText(result.getContents());
-                    name.setText(result.getContents());
-                    price.setText(result.getContents());
                 }
             }
-
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

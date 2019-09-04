@@ -24,7 +24,7 @@ public class joinActivity extends AppCompatActivity {
     String Pw = "";
     String Nm = "";
     String Phone = "";
-    String sUrl = "http://220.76.34.131:8080/dmdm/insert.jsp";
+    String sUrl = "http://210.121.80.204:8080/dmdm/insert.jsp";
     NetworkTask networkTask = new NetworkTask();
 
     @Override

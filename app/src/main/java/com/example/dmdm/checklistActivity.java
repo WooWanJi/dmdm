@@ -32,8 +32,8 @@ public class checklistActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checklist);
-       // arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.activity_list_item); //지워야지***************************************
 
+        dbSelect();
         listView = (ListView) findViewById(R.id.listview1);
 
         DatabaseHelper databaseHelper = new DatabaseHelper(this, "DB", null, 1);
