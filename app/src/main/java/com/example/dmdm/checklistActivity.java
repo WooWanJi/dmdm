@@ -27,13 +27,13 @@ public class checklistActivity extends AppCompatActivity {
     */
     ListView listView;
     SQLiteDatabase db;
+    String sql="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checklist);
 
-        dbSelect();
         listView = (ListView) findViewById(R.id.listview1);
 
         DatabaseHelper databaseHelper = new DatabaseHelper(this, "DB", null, 1);
@@ -56,12 +56,30 @@ public class checklistActivity extends AppCompatActivity {
                 Intent intent = new Intent(
                         getApplicationContext(), // 현재 화면의 제어권자
                         ScannerActivity.class); // 다음 넘어갈 클래스 지정
-                startActivity(intent); // 다음 화면으로 넘어간다
+                startActivityForResult(intent, RESULT_OK); // 다음 화면으로 넘어간다
             }
         });
         //finish();
+        try{
+            sql = "select p_name from checklist";
+            Cursor resultset = db.rawQuery(sql, null);
+            int count = resultset.getCount();
+            String[] result = new String[count];
 
+            for(int i=0;i<count;i++){
+                resultset.moveToNext();
+                String SmallCatego = resultset.getString(0);
+                result[i] = SmallCatego+"";
+            }
+            CustomChoiceListViewAdapter customChoiceListViewAdapter = new CustomChoiceListViewAdapter();
+            listView.setAdapter(customChoiceListViewAdapter);
+            for(int i=0;i<result.length ;i++) {
+                customChoiceListViewAdapter.addItem(result[i]);
+            }
+        }catch (Exception e){
+        }
     }
+
     void dbDelete(String tableName, String p_name){
         Log.d(TAG, "Delete Data "+p_name);
         String p_nameArr[] = {p_name};
@@ -72,7 +90,7 @@ public class checklistActivity extends AppCompatActivity {
 
     void dbSelect(){
         try{
-            String sql = "select p_name from checklist";
+            sql = "select p_name from checklist";
             Cursor resultset = db.rawQuery(sql, null);
             int count = resultset.getCount();
             String[] result = new String[count];

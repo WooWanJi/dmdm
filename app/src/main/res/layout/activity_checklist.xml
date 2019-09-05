@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".MainActivity">
 
-    <ListView
-        android:id="@+id/listview1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:choiceMode="multipleChoice" />
 
     <ImageButton
         android:id="@+id/scanBtn"
@@ -25,19 +21,18 @@ tools:context=".MainActivity">
         android:scaleType="fitCenter"
         android:src="@drawable/barcode" />
 
+    <ListView
+        android:id="@+id/listview1"
+        android:layout_width="match_parent"
+        android:layout_height="535dp" />
+
     <ImageButton
         android:id="@+id/search"
-        android:layout_width="117dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="133dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="145dp"
-        android:layout_marginBottom="-3dp"
-        android:adjustViewBounds="true"
-        android:padding="0sp"
+        android:layout_width="71dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#00ffffff"
         android:scaleType="fitCenter"
-        android:src="@drawable/plus" />
+        android:src="@drawable/outline_add_black_36dp" />
 
-</RelativeLayout>
+</LinearLayout>

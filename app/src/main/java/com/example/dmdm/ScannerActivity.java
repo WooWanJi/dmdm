@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class ScannerActivity extends AppCompatActivity {
 
-    private Button buttonScan;
+    private Button buttonScan, buttonAdd;
     private TextView Smallcatego,p_name, p_price;
     
 
@@ -49,6 +49,7 @@ public class ScannerActivity extends AppCompatActivity {
         Smallcatego = (TextView) findViewById(R.id.category);
         p_price = (TextView)  findViewById(R.id.price);
         p_id = (TextView) findViewById(R.id.p_id);
+        buttonAdd = (Button) findViewById(R.id.buttonAdd);
 
         //intializing scan object
         qrScan = new IntentIntegrator(this);
@@ -62,6 +63,15 @@ public class ScannerActivity extends AppCompatActivity {
                 qrScan.initiateScan();
             }
         });
+
+        buttonAdd.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
     }
 
     //바코드번호를 execute해서 networkTask함수로 넘어옴
@@ -73,7 +83,7 @@ public class ScannerActivity extends AppCompatActivity {
             try {
                 String str;
                 String json = "";
-                URL url = new URL("http://210.121.81.97:8080/dmdm/aaa.jsp");
+                URL url = new URL("http://210.121.81.97:8080/dmdm/scanner.jsp");
                 HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
                 urlConn.setRequestProperty("Context_Type", "application/x-www-form-urlencoded");
                 urlConn.setRequestMethod("POST");
