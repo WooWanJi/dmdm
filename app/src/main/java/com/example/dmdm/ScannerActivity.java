@@ -68,7 +68,8 @@ public class ScannerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent();
-                setResult(RESULT_OK, intent);
+                intent.putExtra("smallcatego",Smallcatego.getText());
+                setResult(100, intent);
                 finish();
             }
         });
@@ -83,7 +84,7 @@ public class ScannerActivity extends AppCompatActivity {
             try {
                 String str;
                 String json = "";
-                URL url = new URL("http://210.121.81.97:8080/dmdm/scanner.jsp");
+                URL url = new URL("http://220.93.8.187:8080/dmdm/scanner.jsp");
                 HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
                 urlConn.setRequestProperty("Context_Type", "application/x-www-form-urlencoded");
                 urlConn.setRequestMethod("POST");

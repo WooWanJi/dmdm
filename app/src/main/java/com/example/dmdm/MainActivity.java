@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             //Log.e("*********", "*************2");
             try {
                 String str;
-                URL url = new URL("http://210.121.81.97:8080/dmdm/login.jsp");
+                URL url = new URL("http://220.93.8.187:8080/dmdm/login.jsp");
                 HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
                 urlConn.setRequestProperty("Context_Type", "application/x-www-form-urlencoded");
                 urlConn.setRequestMethod("POST");

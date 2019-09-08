@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,13 +36,14 @@ public class CustomChoiceListViewAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.listview_item, parent, false);
         }
         TextView textTextView = (TextView) convertView.findViewById(R.id.textView1) ;
+        CheckBox cb = (CheckBox) convertView.findViewById(R.id.checkBox1);
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         ListViewItem listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
         textTextView.setText(listViewItem.getText());
-
+        listViewItem.setCb(cb);
         return convertView;
     }
 

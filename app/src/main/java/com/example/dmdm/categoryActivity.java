@@ -46,7 +46,7 @@ public class categoryActivity extends AppCompatActivity {
             try{
                 //서버 연동
                 String str;
-                URL url = new URL("http://210.121.81.97:8080/dmdm/category.jsp");
+                URL url = new URL("http://220.93.8.187:8080/dmdm/category.jsp");
                 HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
                 urlConn.setRequestProperty("Context_Type", "application/x-www-form-urlencoded");
                 urlConn.setRequestMethod("POST");

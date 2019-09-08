@@ -11,9 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import static android.content.ContentValues.TAG;
 
 /*
@@ -21,6 +24,8 @@ import static android.content.ContentValues.TAG;
  */
 public class checklistActivity extends AppCompatActivity {
     private int REQUEST_TEST = 1;
+    HashMap<Integer, String> checkMap = new HashMap();
+
 
     /* step 1
     커스텀 어뎁터 변수 선언
@@ -28,7 +33,7 @@ public class checklistActivity extends AppCompatActivity {
     ListView listView;
     SQLiteDatabase db;
     String sql="";
-
+    CustomChoiceListViewAdapter customChoiceListViewAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,28 +61,20 @@ public class checklistActivity extends AppCompatActivity {
                 Intent intent = new Intent(
                         getApplicationContext(), // 현재 화면의 제어권자
                         ScannerActivity.class); // 다음 넘어갈 클래스 지정
-                startActivityForResult(intent, RESULT_OK); // 다음 화면으로 넘어간다
+                startActivityForResult(intent, REQUEST_TEST); // 다음 화면으로 넘어간다
             }
         });
         //finish();
-        try{
-            sql = "select p_name from checklist";
-            Cursor resultset = db.rawQuery(sql, null);
-            int count = resultset.getCount();
-            String[] result = new String[count];
+        dbSelect();
 
-            for(int i=0;i<count;i++){
-                resultset.moveToNext();
-                String SmallCatego = resultset.getString(0);
-                result[i] = SmallCatego+"";
+        Button btn_buy = (Button) findViewById(R.id.buy);
+        btn_buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), BuyActivity.class);
+                startActivityForResult(intent, REQUEST_TEST);
             }
-            CustomChoiceListViewAdapter customChoiceListViewAdapter = new CustomChoiceListViewAdapter();
-            listView.setAdapter(customChoiceListViewAdapter);
-            for(int i=0;i<result.length ;i++) {
-                customChoiceListViewAdapter.addItem(result[i]);
-            }
-        }catch (Exception e){
-        }
+        });
     }
 
     void dbDelete(String tableName, String p_name){
@@ -105,24 +102,39 @@ public class checklistActivity extends AppCompatActivity {
             arrayAdapter.addAll(result);*/
 
             // step 2 커스텀 어레이 생성(new)
-            CustomChoiceListViewAdapter customChoiceListViewAdapter = new CustomChoiceListViewAdapter();
+            customChoiceListViewAdapter = new CustomChoiceListViewAdapter();
             // step 3 리스트 뷰에 커스텀 어뎁터 넣기
             listView.setAdapter(customChoiceListViewAdapter);
             // step 4 result의 내용을 커스텀어뎁터 변수에 addItem(result의 자료형과 addItem 메소드의 파라미터를 잘보고 넣는 방법을 응용)
             for(int i=0;i<result.length ;i++) {
                 customChoiceListViewAdapter.addItem(result[i]);
             }
+            for(int i=0;i<customChoiceListViewAdapter.getCount();i++){
+                checkMap.put(i,((ListViewItem)customChoiceListViewAdapter.getItem(i)).getText());
+            }
         }catch (Exception e){
 
         }
     }
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_TEST) {
             if (resultCode == RESULT_OK) {
                 dbSelect();
-            } else {   // RESULT_CANCEL
+            } else if(resultCode == 100) {   // RESULT_CANCEL
+                String sm = data.getStringExtra("smallcatego");
+
+                int position = -1;
+                for(int key : checkMap.keySet()){
+                    if(checkMap.get(key).equals(sm)){
+                        position = key;
+                        break;
+                    }
+                }
+                int a = customChoiceListViewAdapter.getCount();
+                ((ListViewItem)customChoiceListViewAdapter.getItem(position)).getCb().setChecked(true);
 
             }
 
