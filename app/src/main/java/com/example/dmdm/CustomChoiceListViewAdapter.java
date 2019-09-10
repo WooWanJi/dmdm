@@ -37,6 +37,8 @@ public class CustomChoiceListViewAdapter extends BaseAdapter {
         }
         TextView textTextView = (TextView) convertView.findViewById(R.id.textView1) ;
         CheckBox cb = (CheckBox) convertView.findViewById(R.id.checkBox1);
+        TextView priceTextView = (TextView) convertView.findViewById(R.id.price);
+        TextView amountTextView = (TextView) convertView.findViewById(R.id.amount);
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         ListViewItem listViewItem = listViewItemList.get(position);
@@ -44,6 +46,8 @@ public class CustomChoiceListViewAdapter extends BaseAdapter {
         // 아이템 내 각 위젯에 데이터 반영
         textTextView.setText(listViewItem.getText());
         listViewItem.setCb(cb);
+        amountTextView.setText(listViewItem.getAmount().toString());
+
         return convertView;
     }
 
@@ -60,9 +64,10 @@ public class CustomChoiceListViewAdapter extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(String text) {
+    public void addItem(String text, int amount) {
         ListViewItem item = new ListViewItem();
         item.setText(text);
+        item.setAmount(amount);
         listViewItemList.add(item);
     }
     /*

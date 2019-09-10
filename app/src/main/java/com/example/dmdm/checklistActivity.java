@@ -1,6 +1,7 @@
 package com.example.dmdm;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,7 +26,7 @@ import static android.content.ContentValues.TAG;
 public class checklistActivity extends AppCompatActivity {
     private int REQUEST_TEST = 1;
     HashMap<Integer, String> checkMap = new HashMap();
-
+    public static Context mContext;
 
     /* step 1
     커스텀 어뎁터 변수 선언
@@ -75,6 +76,7 @@ public class checklistActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_TEST);
             }
         });
+        mContext = this;
     }
 
     void dbDelete(String tableName, String p_name){
@@ -87,15 +89,19 @@ public class checklistActivity extends AppCompatActivity {
 
     void dbSelect(){
         try{
-            sql = "select p_name from checklist";
+            sql = "select p_name, amount from checklist";
             Cursor resultset = db.rawQuery(sql, null);
             int count = resultset.getCount();
             String[] result = new String[count];
+            int[] iaAmount = new int[count];
 
             for(int i=0;i<count;i++){
                 resultset.moveToNext();
                 String SmallCatego = resultset.getString(0);
+                Integer amount = resultset.getInt(1);
                 result[i] = SmallCatego+"";
+                iaAmount[i] = amount;
+
             }
             System.out.println("select ok");
             /*arrayAdapter.clear();
@@ -105,16 +111,36 @@ public class checklistActivity extends AppCompatActivity {
             customChoiceListViewAdapter = new CustomChoiceListViewAdapter();
             // step 3 리스트 뷰에 커스텀 어뎁터 넣기
             listView.setAdapter(customChoiceListViewAdapter);
+            customChoiceListViewAdapter.clear();
             // step 4 result의 내용을 커스텀어뎁터 변수에 addItem(result의 자료형과 addItem 메소드의 파라미터를 잘보고 넣는 방법을 응용)
             for(int i=0;i<result.length ;i++) {
-                customChoiceListViewAdapter.addItem(result[i]);
+                customChoiceListViewAdapter.addItem(result[i],iaAmount[i]);
             }
             for(int i=0;i<customChoiceListViewAdapter.getCount();i++){
                 checkMap.put(i,((ListViewItem)customChoiceListViewAdapter.getItem(i)).getText());
             }
-        }catch (Exception e){
+        } catch (Exception e){ }
+    }
+    void dbDelete(){
+        sql = "delete from checklist where p_name ='스킨'";
+        db.execSQL(sql);
+    }
 
-        }
+    void dbSum(){
+        try{
+            sql = "select sum(price) from checklist";
+            Cursor resultset = db.rawQuery(sql, null);
+            int count = resultset.getCount();
+            String[] result = new String[count];
+
+            for(int i=0;i<count;i++){
+                resultset.moveToNext();
+                String price = resultset.getString(0);
+                result[i] = price+"";
+            }
+            System.out.println("sum ok");
+
+        }catch (Exception e){ }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

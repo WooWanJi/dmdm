@@ -10,6 +10,7 @@ public class DataBases {
         public static final String p_name = "p_name";
         public static final String check = "check";
         public static final String amount = "amount";
+        public static final String price = "price";
         public static final String _TABLENAME = "checklist";
         public static final String _CREATE = "create table "+_TABLENAME+"("
                 +c_id+" text not null , "
@@ -17,6 +18,7 @@ public class DataBases {
                 +p_id+" integer not null , "
                 +p_name+" text not null , "
                 +check+" boolean not null , "
+                +price+" text not null , "
                 +amount+" integer not null, );";
     }
 }

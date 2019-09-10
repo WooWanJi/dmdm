@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -107,7 +108,7 @@ public class listviewActivity extends AppCompatActivity {
 
         }
         //listview = (ListView)findViewById(R.id.listview);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
         // ArrayList<String> result = new ArrayList<String>();
         listview = (ListView)findViewById(R.id.listview);
         //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
@@ -118,7 +119,10 @@ public class listviewActivity extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
-                dbInsert("checklist", arrayList.get(position));
+                int amount = 1;
+                amount = dbSelectCount(arrayList.get(position));
+                if(amount == 1 )
+                    dbInsert("checklist", arrayList.get(position), amount);
                 Intent intent = new Intent();
                 //intent.putExtra("result", "some value");
                 setResult(RESULT_OK, intent);
@@ -132,12 +136,48 @@ public class listviewActivity extends AppCompatActivity {
 
     }
 
-    void dbInsert(String tableName, String p_name){
+    int dbSelectCount(String p_name){
+        int p_name_count = 0;
+        int amount = 1;
+        try{
+            String sql = "select count(*) from checklist where p_name = '" + p_name+"';";
+            Cursor resultset = db.rawQuery(sql, null);
+            int count = resultset.getCount();
+
+            for(int i=0;i<count;i++){
+                resultset.moveToNext();
+                p_name_count = resultset.getInt(0);
+
+            }
+            if(p_name_count > 0){
+                dbUpdate(p_name);
+                String sql2 = "select amount from checklist where p_name = '" + p_name+"'";
+                Cursor resultset2 = db.rawQuery(sql2, null);
+                int count2 = resultset2.getCount();
+                for(int i=0;i<count2;i++){
+                    resultset2.moveToNext();
+                    amount = resultset2.getInt(0);
+
+                }
+            }
+
+        } catch (Exception e){ }
+        return amount;
+    }
+    void dbInsert(String tableName, String p_name,int amount){
         Log.d(TAG, "Insert Data" + p_name);
         ContentValues contentValues = new ContentValues();
         contentValues.put("p_name", p_name);
+        contentValues.put("amount", amount);
         long id = db.insert(tableName, null, contentValues);
         //Log.d(TAG, "id: "+p_id);
+    }
+
+    void dbUpdate(String p_name){
+        Log.d(TAG, "Update Data" + p_name);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("p_name", p_name);
+        db.execSQL("update checklist set amount = amount + 1 where p_name = '" + p_name+"';");
     }
 
 
