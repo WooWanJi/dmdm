@@ -1,7 +1,9 @@
 package com.example.dmdm;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -76,6 +78,15 @@ public class checklistActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_TEST);
             }
         });
+
+        final Button btn_logout = (Button) findViewById(R.id.logout);
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btn_logout();
+            }
+        });
+
         mContext = this;
     }
 
@@ -184,5 +195,24 @@ public class checklistActivity extends AppCompatActivity {
             }
         }
     }
+
+    void btn_logout() {
+        new AlertDialog.Builder(this)
+                .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
+                .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Intent i = new Intent(checklistActivity.this, MainActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(i);
+                    }
+                })
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                    }
+                })
+                .show();
+    }
+
 
 }
